@@ -1,7 +1,7 @@
 from Player import *
 import random
 
-atk_range = 2
+atk_range = 3
 turnFirst="L"
 
 dir_no = {
