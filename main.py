@@ -55,9 +55,14 @@ def move():
     way_block = []
     block_me = False
     Zone = {"A":0,"B":0,"C":0,"D":0}
+    selected_player=[0,0,0]
    
     for player_link, player in player_info.items():
         if player_link != my_url:
+            if player['score'] < selected_player[0]:
+                selected_player[0] = player['score']
+                selected_player[1] = player['x']
+                selected_player[2] = player['y']
             if player['x'] == mytank.x or player['y'] == mytank.y:
                 enemy = Player(player_link, player['x'],player['y'],player['direction'],player['wasHit'],player['score'])
                 enemy_arr.append(enemy)
@@ -123,7 +128,7 @@ def move():
     if res["move"]:
         return res["move"]
     
-    res = get_action_to_location(dims,mytank.dir,mytank.x,mytank.y,9,7)
+    res = get_action_to_location(dims,mytank.dir,mytank.x,mytank.y,selected_player[1],selected_player[2])
     if res["move"]:
         return res["move"]
     res = check_corner(dims, mytank, states)
