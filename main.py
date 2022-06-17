@@ -59,7 +59,7 @@ def move():
    
     for player_link, player in player_info.items():
         if player_link != my_url:
-            if player['score'] < selected_player[0]:
+            if player['score'] > selected_player[0]:
                 selected_player[0] = player['score']
                 selected_player[1] = player['x']
                 selected_player[2] = player['y']
