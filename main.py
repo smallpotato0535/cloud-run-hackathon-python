@@ -123,10 +123,13 @@ def move():
     if res["move"]:
         return res["move"]
     
-    # res = check_corner(dims, mytank, states)
-    # logger.info(res["des"])
-    # if res["move"]:
-    #     return res["move"]
+    res = get_action_to_location(dims,mytank.dir,mytank.x,mytank.y,9,7)
+    if res["move"]:
+        return res["move"]
+    res = check_corner(dims, mytank, states)
+    logger.info(res["des"])
+    if res["move"]:
+        return res["move"]
 
     res = move_randomly(dims, mytank)
     logger.info(res["des"])
