@@ -69,7 +69,7 @@ def move():
 
     if mytank.wasHit:
         logger.info("wasHit now")
-        # addHitCount()
+        addHitCount()
         logger.info("hit conount < 2: "+str(getHitCount()))
         if getHitCount() >= 2:
             logger.info("hit conount >= 2: "+str(getHitCount()))
