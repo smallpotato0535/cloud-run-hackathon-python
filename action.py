@@ -31,9 +31,9 @@ def shoot_now(me, states, dims):
     # return move_randomly(dims, me)
 
 def got_hit_and_run(me):
-    return {"move":turnFirst, "des":"got_hit_and_run"}
-    # if me.wasHit:
-        # return {"move":turnFirst, "des":"got_hit_and_run"}
+    # return {"move":turnFirst, "des":"got_hit_and_run"}
+    if me.wasHit:
+        return {"move":turnFirst, "des":"got_hit_and_run: was hit and run now"}
     # return {"move":'', "des":"not got hit"}
 
 # return dict

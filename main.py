@@ -154,10 +154,10 @@ def move():
     if res["move"]:
         return res["move"]
 
-    # res = got_hit_and_run(mytank)
-    # logger.info(res["des"])
-    # if res["move"]:
-    #     return res["move"]
+    res = got_hit_and_run(mytank)
+    logger.info(res["des"])
+    if res["move"]:
+        return res["move"]
     
     res = get_action_to_location(dims,mytank.dir,mytank.x,mytank.y,selected_player[1],selected_player[2])
     if res["move"]:
