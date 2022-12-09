@@ -67,25 +67,25 @@ def move():
     tmpScore = mytank.score
     setScore(tmpScore)
 
-    if mytank.wasHit:
-        logger.info("wasHit now")
-        addHitCount()
-        logger.info("hit conount: "+str(getHitCount()))
-        if getHitCount() >= 2:
-            if mytank.score <= getScore():
-                # res = got_hit_and_run(mytank)
-                # logger.info(res["des"])
-                # if res["move"]:
-                #     return res["move"]
-                res = move_randomly(dims, mytank)
+    # if mytank.wasHit:
+    #     logger.info("wasHit now")
+    #     addHitCount()
+    #     logger.info("hit conount: "+str(getHitCount()))
+    #     if getHitCount() >= 2:
+    #         if mytank.score <= getScore():
+    #             # res = got_hit_and_run(mytank)
+    #             # logger.info(res["des"])
+    #             # if res["move"]:
+    #             #     return res["move"]
+    #             res = move_randomly(dims, mytank)
 
-                setHitCount(0)
-                # setScore(tmpScore)
+    #             setHitCount(0)
+    #             # setScore(tmpScore)
 
-                logger.info(res["des"])
-                if res["move"]:
-                    return res["move"]
-    logger.info("not wasHit now")
+    #             logger.info(res["des"])
+    #             if res["move"]:
+    #                 return res["move"]
+    # logger.info("not wasHit now")
    
     for player_link, player in player_info.items():
         if player_link != my_url:
