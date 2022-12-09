@@ -64,8 +64,11 @@ def move():
     
 
     # got hit handle
-    tmpScore = mytank.score
-    setScore(tmpScore)
+    prevScore = getScore()
+    logger.info("prevScore: "+str(prevScore))
+    currScore = mytank.score
+    setScore(currScore)
+    logger.info("currScore: "+str(currScore))
 
     if mytank.wasHit:
         logger.info("wasHit now")
@@ -86,7 +89,7 @@ def move():
                 # logger.info(res["des"])
                 # if res["move"]:
                 #     return res["move"]
-    logger.info("not wasHit now")
+    logger.info("not wasHit now: "+str(getHitCount()))
    
     for player_link, player in player_info.items():
         if player_link != my_url:
