@@ -19,12 +19,16 @@ import random
 from flask import Flask, request
 from Player import *
 from action import *
+from multiprocessing import Value
 
 logging.basicConfig(level=os.environ.get("LOGLEVEL", "INFO"))
 logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
 moves = ['F', 'T', 'L', 'R']
+
+counter = Value('i', 0)
+score = Value('i', 0)
 
 @app.route("/", methods=['GET'])
 def index():
@@ -56,6 +60,29 @@ def move():
     block_me = False
     Zone = {"A":0,"B":0,"C":0,"D":0}
     selected_player=[0,0,0]
+
+    
+
+    # got hit handle
+    tmpScore = mytank.score
+    setScore(tmpScore)
+
+    if mytank.wasHit:
+        addHitCount()
+        if getHitCount() >= 2:
+            if getScore() != 0 and mytank.score <= getScore():
+                # res = got_hit_and_run(mytank)
+                # logger.info(res["des"])
+                # if res["move"]:
+                #     return res["move"]
+                res = move_randomly(dims, mytank)
+
+                setHitCount(0)
+                setScore(tmpScore)
+
+                logger.info(res["des"])
+                if res["move"]:
+                    return res["move"]
    
     for player_link, player in player_info.items():
         if player_link != my_url:
@@ -147,6 +174,23 @@ def move():
         
     return "Random Move"
 
+def addHitCount():
+    with counter.get_lock():
+        counter.value += 1
+
+def setHitCount(value):
+    with counter.get_lock():
+        counter.value = value
+
+def getHitCount():
+    return counter.value
+
+def setScore(value):
+    with score.get_lock():
+        score.value = value
+
+def getScore():
+    return score.value
 
 if __name__ == "__main__":
   app.run(debug=False,host='0.0.0.0',port=int(os.environ.get('PORT', 8080)))

@@ -30,9 +30,10 @@ def shoot_now(me, states):
     return {"move":False, "des":"dont shoot"}
 
 def got_hit_and_run(me):
-    if me.wasHit:
-        return {"move":turnFirst, "des":"got_hit_and_run"}
-    return {"move":'', "des":"not got hit"}
+    return {"move":turnFirst, "des":"got_hit_and_run"}
+    # if me.wasHit:
+        # return {"move":turnFirst, "des":"got_hit_and_run"}
+    # return {"move":'', "des":"not got hit"}
 
 # return dict
 def chase_an_enemy(dims, me, enemy):
