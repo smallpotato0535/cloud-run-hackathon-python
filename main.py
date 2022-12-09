@@ -148,7 +148,7 @@ def move():
     elif res['possible_hit'] == 1 and res['can_attack'] == False and block_me == False:
         return check_and_move(dims,mytank.x,mytank.y,mytank.dir)
     
-    res = shoot_now(mytank, states)
+    res = shoot_now(mytank, states, dims)
     logger.info(res["des"])
     if res["move"]:
         return res["move"]

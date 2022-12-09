@@ -16,7 +16,7 @@ dir_no = {
 }
 
 # return res {dict}
-def shoot_now(me, states):
+def shoot_now(me, states, dims):
     for url, data in states.items():
         if url != me.url:
             if me.x == data['x']:
@@ -27,7 +27,8 @@ def shoot_now(me, states):
                 if abs(me.x - data['x']) <= atk_range:
                     if facing_tar_not(me.dir, me.x, me.y, data['x'], data['y']):
                         return {"move":"T", "des":"shoot now"}
-    return {"move":False, "des":"dont shoot"}
+    # return {"move":False, "des":"dont shoot"}
+    return move_randomly(dims, me)
 
 def got_hit_and_run(me):
     return {"move":turnFirst, "des":"got_hit_and_run"}
