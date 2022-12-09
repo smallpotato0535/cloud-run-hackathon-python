@@ -137,6 +137,7 @@ def move():
 
     res = detect(enemy_arr, mytank)
     if mytank.wasHit:
+        logger.info("Leo: is was hit?" + mytank.wasHit)
         return check_and_move(dims,mytank.x,mytank.y,mytank.dir)
     if res['possible_hit'] > 1:
             if len(way_block) == 4:
