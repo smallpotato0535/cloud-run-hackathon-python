@@ -133,7 +133,7 @@ def move():
                 Zone['D'] += 1
 
     res = detect(enemy_arr, mytank)
-    if res['possible_hit'] >= 1:
+    if res['possible_hit'] > 1:
             if len(way_block) == 4:
                 res = check_corner(dims, mytank, states)
                 if res["move"]:
@@ -144,7 +144,7 @@ def move():
                     return "L"
             return check_and_move(dims,mytank.x,mytank.y,mytank.dir)
 
-    if res['possible_hit'] < 1 and res['can_attack'] == True:
+    if res['possible_hit'] <= 1 and res['can_attack'] == True:
         return "T"
     elif res['possible_hit'] == 1 and res['can_attack'] == False and block_me == False:
         return check_and_move(dims,mytank.x,mytank.y,mytank.dir)
