@@ -145,8 +145,10 @@ def move():
             return check_and_move(dims,mytank.x,mytank.y,mytank.dir)
 
     if res['possible_hit'] <= 1 and res['can_attack'] == True:
+        logger.info("Highest: T")
         return "T"
     elif res['possible_hit'] == 1 and res['can_attack'] == False and block_me == False:
+        logger.info("Highest: check_and_move")
         return check_and_move(dims,mytank.x,mytank.y,mytank.dir)
     
     res = shoot_now(mytank, states, dims)
