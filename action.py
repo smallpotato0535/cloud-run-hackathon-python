@@ -27,8 +27,8 @@ def shoot_now(me, states, dims):
                 if abs(me.x - data['x']) <= atk_range:
                     if facing_tar_not(me.dir, me.x, me.y, data['x'], data['y']):
                         return {"move":"T", "des":"shoot now"}
-    # return {"move":False, "des":"dont shoot"}
-    return move_randomly(dims, me)
+    return {"move":False, "des":"dont shoot, do other things"}
+    # return move_randomly(dims, me)
 
 def got_hit_and_run(me):
     return {"move":turnFirst, "des":"got_hit_and_run"}
